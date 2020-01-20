@@ -1,0 +1,24 @@
+<html>
+<head>
+<script>
+
+function Rabbit(type) {
+	this.type = type;
+}
+
+Rabbit.prototype.speak = function(line) {
+	console.log(`The ${this.type} rabbit says ${line}`);
+}
+
+Rabbit.prototype.toString = function() {
+	return `a ${this.type} Rabbit`;
+}
+
+let weirdRabbit = new Rabbit('weird');
+weirdRabbit.speak('hahaha');
+</script>
+</head>
+<body>
+	<h1>hello</h1>
+</body>
+</html>

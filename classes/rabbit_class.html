@@ -1,0 +1,23 @@
+<html>
+<head>
+<script>
+class Rabbit {
+	constructor(type) {
+		this.type = type;
+	}
+	speak(line) {
+		console.log(`The ${this.type} rabbit says ${line}`);
+	}
+	toString() {
+		return `a ${this.type} rabbit`;
+	}
+}
+
+let rabbit = new Rabbit('weird');
+rabbit.speak('hahi');
+</script>
+</head>
+<body>
+	<h1>hello</h1>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<html>
+<head>
+<script>
+class Group {
+	constructor() {
+		this.container = [];
+	}
+	add(value) {
+		if (!this.has(value)) 
+			this.container.push(value);
+	}
+	delete(value) {
+		this.container = this.container.filter(x => x != value);
+	}
+	has(value) {
+		return this.container.includes(value);
+	}
+	toString() {
+		return `Group ${this.container}`;
+	}
+	static from(iterable) {
+		let group = new Group;
+		for (let item of iterable) {
+			group.add(item);
+		}
+		return group;
+	}
+	[Symbol.iterator]() {
+		return new GroupIter(this);
+	}
+}
+
+class GroupIter {
+	constructor(group) {
+		this.group = group;
+		this.index = 0;
+	}
+	next() {
+		if (this.index >= this.group.container.length) return {done: true};
+		return {value: this.group.container[this.index++], done: false};
+	}
+}
+
+let group = new Group();
+group.add(1);
+group.add(1);
+group.add(2);
+group.add('a');
+
+group.delete('a');
+console.log(group.has(1));
+console.log(group.has('a'));
+
+let arr = [1,2,3,4,1, 'a', 'b', 'c', 'a', 'a'];
+let newGroup = Group.from(arr);
+console.log(newGroup.toString());
+
+for (let item of newGroup) {
+	console.log('item:', item);
+}
+</script>
+</head>
+<body>
+	<h1>hello</h1>
+</body>
+</html>

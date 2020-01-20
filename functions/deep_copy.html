@@ -1,0 +1,17 @@
+<html>
+<head>
+<script>
+function noisy(f) {
+	return (...args) => {
+		console.log('calling with ', args);
+		let result = f(...args);
+		console.log('called with ', args, ', returned ', result);
+		return result;
+	};
+}
+</script>
+</head>
+<body>
+	<h1>hello</h1>
+</body>
+</html>
